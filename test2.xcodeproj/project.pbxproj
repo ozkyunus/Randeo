@@ -11,8 +11,9 @@
 		9201CEF02C636CCC006D9EDC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9201CEEF2C636CCC006D9EDC /* SceneDelegate.swift */; };
 		9201CEF52C636CCC006D9EDC /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 9201CEF42C636CCC006D9EDC /* Base */; };
 		9201CEF72C636CCD006D9EDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9201CEF62C636CCD006D9EDC /* Assets.xcassets */; };
+		923D78752CDF9C3200DC43B4 /* HomeScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923D78742CDF9C3200DC43B4 /* HomeScreen.storyboard */; };
 		926DBF822C6656D7003982EB /* Firestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926DBF812C6656D7003982EB /* Firestore.swift */; };
-		92B523B62C7C711900E3ED3B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B523B52C7C711900E3ED3B /* ViewController.swift */; };
+		92B523B62C7C711900E3ED3B /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B523B52C7C711900E3ED3B /* HomeScreen.swift */; };
 		92EE4C582C85A9BF007E21D8 /* DownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE4C572C85A9BF007E21D8 /* DownloadViewController.swift */; };
 		92EE4C5A2C85A9DA007E21D8 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92EE4C592C85A9DA007E21D8 /* ProfileViewController.swift */; };
 		92F9DA992CD9A3ED00B6E332 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92F9DA982CD9A3ED00B6E332 /* GoogleService-Info.plist */; };
@@ -29,8 +30,9 @@
 		9201CEF42C636CCC006D9EDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9201CEF62C636CCD006D9EDC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9201CEF92C636CCD006D9EDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		923D78742CDF9C3200DC43B4 /* HomeScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeScreen.storyboard; sourceTree = "<group>"; };
 		926DBF812C6656D7003982EB /* Firestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Firestore.swift; sourceTree = "<group>"; };
-		92B523B52C7C711900E3ED3B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92B523B52C7C711900E3ED3B /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		92EE4C572C85A9BF007E21D8 /* DownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewController.swift; sourceTree = "<group>"; };
 		92EE4C592C85A9DA007E21D8 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		92F9DA8A2CD99AC400B6E332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,9 +98,10 @@
 				9201CEF32C636CCC006D9EDC /* Main.storyboard */,
 				9201CEF62C636CCD006D9EDC /* Assets.xcassets */,
 				9201CEF82C636CCD006D9EDC /* LaunchScreen.storyboard */,
-				92B523B52C7C711900E3ED3B /* ViewController.swift */,
+				92B523B52C7C711900E3ED3B /* HomeScreen.swift */,
 				92EE4C572C85A9BF007E21D8 /* DownloadViewController.swift */,
 				92EE4C592C85A9DA007E21D8 /* ProfileViewController.swift */,
+				923D78742CDF9C3200DC43B4 /* HomeScreen.storyboard */,
 			);
 			path = test2;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			files = (
 				9201CEF72C636CCD006D9EDC /* Assets.xcassets in Resources */,
 				9201CEF52C636CCC006D9EDC /* Base in Resources */,
+				923D78752CDF9C3200DC43B4 /* HomeScreen.storyboard in Resources */,
 				92F9DA992CD9A3ED00B6E332 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +235,7 @@
 				926DBF822C6656D7003982EB /* Firestore.swift in Sources */,
 				9201CEEE2C636CCC006D9EDC /* AppDelegate.swift in Sources */,
 				92F9DA9C2CDD24D500B6E332 /* Authentication.swift in Sources */,
-				92B523B62C7C711900E3ED3B /* ViewController.swift in Sources */,
+				92B523B62C7C711900E3ED3B /* HomeScreen.swift in Sources */,
 				92EE4C5A2C85A9DA007E21D8 /* ProfileViewController.swift in Sources */,
 				92EE4C582C85A9BF007E21D8 /* DownloadViewController.swift in Sources */,
 				9201CEF02C636CCC006D9EDC /* SceneDelegate.swift in Sources */,

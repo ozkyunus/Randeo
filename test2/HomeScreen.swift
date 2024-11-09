@@ -2,7 +2,7 @@ import UIKit
 import FirebaseFirestore
 import youtube_ios_player_helper
 
-class ViewController: UIViewController, YTPlayerViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+class HomeScreen: UIViewController, YTPlayerViewDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -25,7 +25,6 @@ class ViewController: UIViewController, YTPlayerViewDelegate, UIPickerViewDelega
         pickerView.dataSource = self
         
         pickerView.tintColor = .white
-
         selectedCategory = categories.first
         selectedDocumentID = "jeaZJhpLkT59OQaxRccT"
         loadVideoIDs()

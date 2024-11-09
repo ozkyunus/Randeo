@@ -17,23 +17,24 @@ class Authentication: UIViewController {
     
     @IBAction func EnterButton(_ sender: Any) {
         guard let email = mailTextField.text, !email.isEmpty else {
-                    showAlert(message: "E-posta boş olamaz.")
-                    return
-                }
-                
-                guard let password = passwordTextField.text, !password.isEmpty else {
-                    showAlert(message: "Şifre boş olamaz.")
-                    return
-                }
+            showAlert(message: "E-posta boş olamaz.")
+            return
+        }
+        
+        guard let password = passwordTextField.text, !password.isEmpty else {
+            showAlert(message: "Şifre boş olamaz.")
+            return
+        }
 
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
-            if let error = error {
-                self.showAlert(message: "Giriş başarısız: \(error.localizedDescription)")
-                return
+            DispatchQueue.main.async {
+                if let error = error {
+                    self.showAlert(message: "Giriş başarısız: \(error.localizedDescription)")
+                } else {
+                    let goBoard = UIStoryboard(name: "HomeScreen", bundle: nil).instantiateViewController(withIdentifier: "HomeScreen") as! HomeScreen
+                    self.present(goBoard, animated: true, completion: nil)
+                }
             }
-
-            self.showAlert(message: "Giriş başarılı!", isSuccess: true)
-            
         }
     }
 
