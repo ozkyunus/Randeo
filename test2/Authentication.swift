@@ -25,21 +25,18 @@ class Authentication: UIViewController {
                     showAlert(message: "Şifre boş olamaz.")
                     return
                 }
-                
-                // Firebase Authentication ile giriş yap
+
         Auth.auth().signIn(withEmail: email, password: password) { (authResult, error) in
             if let error = error {
                 self.showAlert(message: "Giriş başarısız: \(error.localizedDescription)")
                 return
             }
-            
-            // Başarılı giriş
+
             self.showAlert(message: "Giriş başarılı!", isSuccess: true)
             
         }
     }
-        
-        // Alert mesajı gösterme
+
         func showAlert(message: String, isSuccess: Bool = false) {
             let alert = UIAlertController(title: isSuccess ? "Başarılı" : "Hata", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Tamam", style: .default, handler: nil))
