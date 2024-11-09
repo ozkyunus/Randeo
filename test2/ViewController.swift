@@ -20,19 +20,15 @@ class ViewController: UIViewController, YTPlayerViewDelegate, UIPickerViewDelega
                fatalError("playerView veya pickerView nil")
            }
         
-        // YTPlayerView delegate'ini ayarlayın
         playerView.delegate = self
-        
-        // UIPickerView delegate ve dataSource'u ayarlayın
         pickerView.delegate = self
         pickerView.dataSource = self
         
         pickerView.tintColor = .white
-        
-        // İlk kategoriyi seçili olarak ayarla
+
         selectedCategory = categories.first
-        selectedDocumentID = "jeaZJhpLkT59OQaxRccT" // Ana belgenin ID'sini atıyoruz
-        loadVideoIDs() // İlk açıldığında mevcut kategorinin videolarını yükleyelim
+        selectedDocumentID = "jeaZJhpLkT59OQaxRccT"
+        loadVideoIDs()
     }
     
     func loadVideoIDs() {
@@ -48,8 +44,6 @@ class ViewController: UIViewController, YTPlayerViewDelegate, UIPickerViewDelega
             }
         }
     }
-    
-    // Firestore'dan seçili kategoriye göre video ID'lerini çekmek için kullanılır
     func fetchVideoIDs(for category: String, completion: @escaping ([String]) -> Void) async {
         guard let documentID = selectedDocumentID else {
             print("Document ID yok.")
@@ -78,8 +72,6 @@ class ViewController: UIViewController, YTPlayerViewDelegate, UIPickerViewDelega
         }
     }
        
-    
-    // IBAction: RandomButton'a basıldığında çalışır
     @IBAction func playRandomVideo(_ sender: UIButton) {
         guard let category = selectedCategory else {
             print("Kategori seçilmemiş.")
@@ -87,7 +79,6 @@ class ViewController: UIViewController, YTPlayerViewDelegate, UIPickerViewDelega
         }
         
         if remainingVideoIDs.isEmpty {
-                   // Eğer remainingVideoIDs boşsa, videoları tekrar yüklemeyi dene
                    loadVideoIDs()
                }
                
@@ -97,45 +88,39 @@ class ViewController: UIViewController, YTPlayerViewDelegate, UIPickerViewDelega
                }
                
                if let randomVideoID = remainingVideoIDs.randomElement() {
-                   remainingVideoIDs.removeAll { $0 == randomVideoID } // Gösterilen videoyu remainingVideoIDs'den çıkarıyoruz
+                   remainingVideoIDs.removeAll { $0 == randomVideoID }
                    playYouTubeVideo(videoID: randomVideoID)
                }
            }
            
-           // Video ID'yi kullanarak YouTube videosunu oynatır
            func playYouTubeVideo(videoID: String) {
                print("Playing video with ID: \(videoID)")
                playerView.load(withVideoId: videoID)
            }
            
-           // UIPickerViewDataSource - Bileşen sayısı
+
            func numberOfComponents(in pickerView: UIPickerView) -> Int {
                return 1
            }
            
-           // UIPickerViewDataSource - Satır sayısı
+
            func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
                return categories.count
            }
-           
-           // UIPickerViewDelegate - Satır başlıkları
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        // Bu fonksiyonu beyaz yazı rengini ayarlamak için kullanmak yerine boş bırakabiliriz.
         return categories[row]
     }
 
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         return NSAttributedString(string: categories[row], attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
     }
-           
-           // UIPickerViewDelegate - Seçilen satır
+
            func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
                selectedCategory = categories[row]
-               remainingVideoIDs = [] // Kategori değiştiğinde remainingVideoIDs dizisini sıfırla
-               loadVideoIDs() // Yeni kategori için videoları yükle
+               remainingVideoIDs = []
+               loadVideoIDs()
            }
-           
-           // YTPlayerView Delegate fonksiyonları
            func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
                playerView.playVideo()
            }
