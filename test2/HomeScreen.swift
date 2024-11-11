@@ -36,38 +36,35 @@ class HomeScreen: UIViewController, YTPlayerViewDelegate, UIPickerViewDelegate, 
             return
         }
         
-        Task {
-            await fetchVideoIDs(for: category) { [weak self] videoIDs in
-                guard let self = self else { return }
+        Task { [weak self] in
+            guard let self = self else { return }
+            let videoIDs = await fetchVideoIDs(for: category)
+            DispatchQueue.main.async {
                 self.remainingVideoIDs = videoIDs
             }
         }
     }
-    func fetchVideoIDs(for category: String, completion: @escaping ([String]) -> Void) async {
+    func fetchVideoIDs(for category: String) async -> [String] {
         guard let documentID = selectedDocumentID else {
             print("Document ID yok.")
-            return
+            return []
         }
         
         let db = Firestore.firestore()
-        let collectionRef = db.collection("categories")
-                              .document(documentID)
-                              .collection(category)
-        
         do {
-            let querySnapshot = try await collectionRef.getDocuments()
-            var videoIDs: [String] = []
-            for document in querySnapshot.documents {
-                if let videoID = document.data()["videoID"] as? String {
-                    videoIDs.append(videoID)
-                }
+            let querySnapshot = try await db.collection("categories")
+                .document(documentID)
+                .collection(category)
+                .getDocuments()
+                
+            let videoIDs = querySnapshot.documents.compactMap { document in
+                document.data()["videoID"] as? String
             }
             print("Fetched video IDs for \(category): \(videoIDs)")
-            self.videoIDs = videoIDs
-            completion(videoIDs)
+            return videoIDs
         } catch {
             print("Error getting documents: \(error.localizedDescription)")
-            completion([])
+            return []
         }
     }
        
